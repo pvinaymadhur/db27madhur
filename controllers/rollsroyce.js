@@ -1,8 +1,15 @@
 const rollsroyce = require('../models/rollsroyce');
 var Rollsroyce = require('../models/rollsroyce');
 // List of all Rollsroyces
-exports.rollsroyce_list = function(req, res) {
- res.send('NOT IMPLEMENTED: Rollsroyce list');
+exports.rollsroyce_list = async function(req, res) {
+    try{
+        theRollsroyces = await Rollsroyce.find();
+        res.send(theRollsroyces);
+        }
+        catch(err){
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+        } 
 };
 // for a specific Rollsroyce.
 exports.rollsroyce_detail = function(req, res) {
