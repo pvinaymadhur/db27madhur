@@ -27,3 +27,15 @@ exports.rollsroyce_delete = function(req, res) {
 exports.rollsroyce_update_put = function(req, res) {
  res.send('NOT IMPLEMENTED: Rollsroyce update PUT' + req.params.id);
 };
+// VIEWS
+// Handle a show all view
+exports.rollsroyce_view_all_Page = async function(req, res) {
+    try{
+        theRollsroyces = await Rollsroyce.find();
+    res.render('rollsroyce', { title: 'Rollsroyce Search Results', results: theRollsroyces });
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+   };
