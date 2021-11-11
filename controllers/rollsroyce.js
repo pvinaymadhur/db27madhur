@@ -16,9 +16,26 @@ exports.rollsroyce_detail = function(req, res) {
  res.send('NOT IMPLEMENTED: Rollsroyce detail: ' + req.params.id);
 };
 // Handle Rollsroyce create on POST.
-exports.rollsroyce_create_post = function(req, res) {
- res.send('NOT IMPLEMENTED: Rollsroyce create POST');
-};
+// Handle Rollsroyce create on POST.
+exports.rollsroyce_create_post = async function(req, res) {
+    console.log(req.body)
+    let document = new Rollsroyce();
+    // We are looking for a body, since POST does not have query parameters.
+    // Even though bodies can be in many different formats, we will be picky
+    // and require that it be a json object
+    // {"rollsroycee_type":"goat", "cost":12, "size":"large"}
+    document.rollsroyce_type = req.body.rollsroyce_type;
+    document.cost = req.body.cost;
+    document.model = req.body.model;
+    try{
+    let result = await document.save();
+    res.send(result);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+   };
 // Handle Rollsroyce delete form on DELETE.
 exports.rollsroyce_delete = function(req, res) {
  res.send('NOT IMPLEMENTED: Rollsroyce delete DELETE ' + req.params.id);
