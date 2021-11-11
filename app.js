@@ -9,8 +9,46 @@ var usersRouter = require('./routes/users');
 var rollsroyceRouter = require('./routes/rollsroyce');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
+var Rollsroyce = require("./models/rollsroyce");
+var resourceRouter = require("./routes/resource");
 
+
+async function recreateDB() {
+  // Delete everything
+  await Rollsroyce.deleteMany();
+  let instance1 = new Rollsroyce({
+    rollsroyce_type: "phantom",
+    model: "coupe",
+    cost: 2400,
+  });
+  let instance2 = new Rollsroyce({
+    rollsroyce_type: "ghost",
+    model: "sedan",
+    cost: 2500,
+  });
+  let instance3 = new Rollsroyce({
+    rollsroyce_type: "cullinan",
+    model: "suv",
+    cost: 2600,
+  });
+  instance1.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("First object saved");
+  });
+  instance2.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("Second object saved");
+  });
+  instance3.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("Third object saved");
+  });
+}
+
+let reseed = true;
+if (reseed) { recreateDB();}
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,6 +65,7 @@ app.use('/users', usersRouter);
 app.use('/rollsroyce', rollsroyceRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
+app.use('/',resourceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
