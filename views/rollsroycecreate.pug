@@ -9,13 +9,13 @@ block content
         form(id='RollsroyceForm', action="/resource/resource/rollsroyces/", method="POST")
           div.form-group
               label(for='rollsroyce_type') Rollsroyce type: 
-              input#rollsroyce_type(type='text', name='rollsroyce_type',class="form-control form-control-sm" style="margin-bottom:10px")
+              input#rollsroyce_type(type='text', name='rollsroyce_type',class="form-control form-control-sm")
           div.form-group
               label(for='cost') Rollsroyce Cost: 
-              input#cost(type='text', name='cost',class="form-control form-control-sm" style="margin-bottom:10px")
+              input#cost(type='text', name='cost',class="form-control form-control-sm")
           div.form-group
               label(for='model') Rollsroyce model: 
-              input#model(type='number', name='model',class="form-control form-control-sm" style="margin-bottom:10px" )
+              input#model(type='text', name='model',class="form-control form-control-sm" )
           input(type="submit" class="btn btn-primary btn-sm")
       div(class="col-md-4")
   script.
@@ -26,7 +26,7 @@ block content
           method: 'POST',
           body: new URLSearchParams(new FormData(event.target)) // event.target is the form
         }).then((resp) => {
-          document.getElementById("errors").style.display = "block"
+          document.getElementById("errors")
           return resp.json(); // or resp.text() or whatever the server sends
         }).then((body) => {
           if (body.Name) {
