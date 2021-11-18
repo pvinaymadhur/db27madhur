@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+
+    - let rollsroyceid = toShow._id
+    - let rollsroyce_type = toShow.rollsroyce_type
+    - let rollsroyceCost = toShow.cost
+    - let rollsroyceModel = toShow.model
+    div
+      div.row
+        div(class='rollsroyceAttr mr-3') rollsroyce ID is:
+        div #{rollsroyceid}
+      div.row
+        div(class='rollsroyceAttr mr-3') rollsroyce Type is:
+        div #{rollsroyce_type}
+      div.row
+        div(class='rollsroyceAttr mr-3') rollsroyce Cost is:
+        div #{rollsroyceCost}
+      div.row
+        div(class='rollsroyceAttr mr-3') rollsroyce Model is:
+        div #{rollsroyceModel}

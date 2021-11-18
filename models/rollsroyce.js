@@ -4,5 +4,5 @@ rollsroyce_type: String,
 model: String,
 cost: Number
 })
-module.exports = mongoose.model("Costume",
+module.exports = mongoose.model("rollsroyce",
 rollsroyceSchema)

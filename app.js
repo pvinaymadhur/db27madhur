@@ -11,6 +11,7 @@ var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 var Rollsroyce = require("./models/rollsroyce");
 var resourceRouter = require("./routes/resource");
+var detailRouter = require("./routes/detail");
 
 
 async function recreateDB() {
@@ -65,7 +66,8 @@ app.use('/users', usersRouter);
 app.use('/rollsroyce', rollsroyceRouter);
 app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
-app.use('/',resourceRouter);
+app.use('/resource',resourceRouter);
+app.use('/detail',detailRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
