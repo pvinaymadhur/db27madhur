@@ -31,9 +31,9 @@ const secured = (req, res, next) => {
 /* GET detail costume page */
  router.get('/detail', rollsroyce_controlers.rollsroyce_view_one_Page);
 /* GET create costume page */
-router.get('/create', rollsroyce_controlers.rollsroyce_create_Page);
+router.get('/create',secured, rollsroyce_controlers.rollsroyce_create_Page);
 /* GET create update page */
 router.get('/update',secured, rollsroyce_controlers.rollsroyce_update_Page);
 /* GET create costume page */
-router.get('/delete', rollsroyce_controlers.rollsroyce_delete_Page);
+router.get('/delete',secured, rollsroyce_controlers.rollsroyce_delete_Page);
 module.exports = router;
